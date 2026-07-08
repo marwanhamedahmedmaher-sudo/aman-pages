@@ -17,9 +17,10 @@ Pages rebuilds automatically on every push to `main`.
 
 | File | Purpose | URL |
 |------|---------|-----|
-| `index.html` | **Visit-export tool** — supervisor logs in, picks a **from/to date range** (or "all"), downloads an Excel workbook of field visits (photos embedded). | https://marwanhamedahmedmaher-sudo.github.io/aman-pages/ |
-| `admin-portal.html` | **Rep-management portal** — list / create / suspend / reactivate / reset-password for sales reps. | https://marwanhamedahmedmaher-sudo.github.io/aman-pages/admin-portal.html |
-| `supervisor-portal.html` | **Merged tool** — both of the above in one page with two tabs («تقارير الزيارات» + «إدارة المناديب»). Intended to eventually replace the two standalone pages. | https://marwanhamedahmedmaher-sudo.github.io/aman-pages/supervisor-portal.html |
+| `index.html` | **Merged supervisor portal — the default landing page.** Visit-export + rep-management in one page with two tabs («تقارير الزيارات» + «إدارة المناديب»). Byte-identical to `supervisor-portal.html`. | https://marwanhamedahmedmaher-sudo.github.io/aman-pages/ |
+| `supervisor-portal.html` | Same merged portal, kept at its original URL so existing links/bookmarks keep working. | https://marwanhamedahmedmaher-sudo.github.io/aman-pages/supervisor-portal.html |
+| `admin-portal.html` | **Rep-management portal** (standalone) — list / create / suspend / reactivate / reset-password for sales reps. | https://marwanhamedahmedmaher-sudo.github.io/aman-pages/admin-portal.html |
+| `visit-export.html` | **Visit-export tool** (standalone) — supervisor logs in, picks a from/to date range, downloads an Excel workbook of field visits (photos embedded). Was previously the root page. | https://marwanhamedahmedmaher-sudo.github.io/aman-pages/visit-export.html |
 
 All pages are RTL Arabic.
 
@@ -64,7 +65,10 @@ The source of truth is **`Aman_One/docs/`**. To change a page:
 1. Edit the canonical file in `Aman_One` (`docs/visit-export.html`,
    `docs/admin-portal.html`, or `docs/supervisor-portal.html`) and open a PR there so the
    change is reviewed alongside any edge-function changes it depends on.
-2. Copy the updated file into this repo (renaming `visit-export.html` → `index.html`).
+2. Copy the updated file into this repo. **Mapping:**
+   - `docs/supervisor-portal.html` → copy to **both** `supervisor-portal.html` **and** `index.html` (the root page mirrors the merged portal).
+   - `docs/visit-export.html` → copy to `visit-export.html`.
+   - `docs/admin-portal.html` → copy to `admin-portal.html`.
 3. Commit + push to `main`. GitHub Pages redeploys automatically (usually within a minute).
 
 If you changed anything the page calls, remember the **backend logic lives in the
